@@ -1,0 +1,107 @@
+.techstack-section {
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: 80px auto;
+  padding: 280px 0 60px;
+}
+
+.techstack-section h2 {
+  font-size: 70px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(0deg, #7f40ff, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 60px;
+}
+
+.techstack-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.techstack-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 28px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.techstack-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accentColor);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(127, 64, 255, 0.15);
+}
+
+.techstack-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.techstack-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(0.3);
+  transition: filter 0.3s ease;
+}
+
+.techstack-card:hover .techstack-icon img {
+  filter: grayscale(0);
+}
+
+.techstack-card p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #b0a8b9;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.techstack-card:hover p {
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 900px) {
+  .techstack-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .techstack-section h2 {
+    font-size: 45px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .techstack-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .techstack-section h2 {
+    font-size: 35px;
+  }
+  .techstack-card {
+    padding: 20px 16px;
+  }
+  .techstack-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
