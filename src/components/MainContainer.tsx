@@ -4,7 +4,6 @@ import Career from "./Career";
 import Education from "./Education";
 import Achievements from "./Achievements";
 import Contact from "./Contact";
-import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
@@ -32,7 +31,6 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 
   return (
     <div className="container-main">
-      <Cursor />
       <Navbar />
       <SocialIcons />
       {isDesktopView && children}

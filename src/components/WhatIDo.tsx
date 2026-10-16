@@ -98,8 +98,8 @@ const WhatIDo = () => {
                 <div className="what-tags">HTML5</div>
                 <div className="what-tags">CSS</div>
                 <div className="what-tags">JavaScript</div>
+                <div className="what-tags">TypeScript</div>
                 <div className="what-tags">React.js</div>
-                <div className="what-tags">Kotlin</div>
               </div>
               <div className="what-arrow"></div>
             </div>

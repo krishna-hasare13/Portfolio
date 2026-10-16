@@ -40,7 +40,7 @@ const Career = () => {
                 <h4>Web Developer Intern</h4>
                 <h5>Labmentix (Remote)</h5>
               </div>
-              <h3>Jan 2026 - July 2026</h3>
+              <h3>Jan 2026 - June 2026</h3>
             </div>
             <ul>
               <li>

@@ -40,6 +40,40 @@
   touch-action: pan-x;
 }
 
+.work-next-btn {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  height: 52px;
+  width: 52px;
+  margin-left: -76px;
+  border: 1px solid var(--accentColor);
+  border-radius: 50%;
+  color: var(--accentColor);
+  background: var(--backgroundColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.work-next-btn:hover {
+  color: var(--backgroundColor);
+  background: var(--accentColor);
+}
+
+.work-prev-btn {
+  right: auto;
+  left: 24px;
+}
+
+.work-prev-btn svg {
+  transform: rotate(180deg);
+}
+
 .work-flex::-webkit-scrollbar {
   display: none;
 }

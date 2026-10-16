@@ -1,6 +1,8 @@
 import "./styles/Work.css";
+import { useEffect, useRef, useState } from "react";
 import WorkImage from "./WorkImage";
-import { FaGithub } from "react-icons/fa6";
+import { FaGithub, FaLink } from "react-icons/fa6";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 
 
@@ -9,33 +11,68 @@ const projects = [
     name: "MentorSpace",
     category: "Real-Time Mentorship Platform",
     tools: "React, Node.js, Express, MongoDB, WebRTC, Socket.io",
-    github: "https://github.com/krishna-hasare13/Mentorspace",
+    link: "https://github.com/krishna-hasare13/Mentorspace",
     image: "/images/mentorspace.png",
   },
   {
-    name: "IntelliAssess",
-    category: "AI-Powered Credit Risk & Appraisal",
-    tools: "React, Node.js, Python, AI/ML, MongoDB",
-    github: "https://github.com/krishna-hasare13/IntelliAssess",
+    name: "Cresem",
+    category: "AI Credit Intelligence & Risk Assessment Engine",
+    tools: "Python, FastAPI, LangChain, LLM APIs",
+    link: "https://cresem.asenra.in",
     image: "/images/IntelliAssess.png",
   },
   {
     name: "Voice Phishing Detection",
     category: "AI/ML Security Project",
     tools: "Python, BERT, NLP, Speech-to-Text, ML Pipeline",
-    github: "https://github.com/krishna-hasare13/voice-phishing-detection",
+    link: "https://github.com/krishna-hasare13/voice-phishing-detection",
     image: "/images/voice phishing.png",
   },
 ];
 
 const Work = () => {
+  const workFlexRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollButtons = () => {
+    const workFlex = workFlexRef.current;
+    if (!workFlex) return;
+
+    setCanScrollLeft(workFlex.scrollLeft > 1);
+    setCanScrollRight(
+      workFlex.scrollLeft + workFlex.clientWidth < workFlex.scrollWidth - 1,
+    );
+  };
+
+  useEffect(() => {
+    updateScrollButtons();
+    window.addEventListener("resize", updateScrollButtons);
+
+    return () => window.removeEventListener("resize", updateScrollButtons);
+  }, []);
+
+  const scrollProjects = (direction: "left" | "right") => {
+    const workFlex = workFlexRef.current;
+    if (!workFlex) return;
+
+    workFlex.scrollBy({
+      left: direction === "right" ? workFlex.clientWidth : -workFlex.clientWidth,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
         <h2>
           My <span>Work</span>
         </h2>
-        <div className="work-flex">
+        <div
+          className="work-flex"
+          ref={workFlexRef}
+          onScroll={updateScrollButtons}
+        >
           {projects.map((project, index) => (
             <div className="work-box" key={index}>
               <div className="work-info">
@@ -53,16 +90,36 @@ const Work = () => {
               <WorkImage image={project.image} alt={project.name} />
               <div className="work-links">
                 <a
-                  href={project.github}
+                  href={project.link}
                   target="_blank"
                   className="work-link-btn"
                   data-cursor="disable"
                 >
-                  <FaGithub /> GitHub
+                  {project.name === "Cresem" ? <FaLink /> : <FaGithub />} {project.name === "Cresem" ? "Live Link" : "GitHub"}
                 </a>
               </div>
             </div>
           ))}
+          {canScrollLeft && (
+            <button
+              className="work-next-btn work-prev-btn"
+              type="button"
+              onClick={() => scrollProjects("left")}
+              aria-label="Show previous project"
+            >
+              <MdKeyboardArrowRight />
+            </button>
+          )}
+          {canScrollRight && (
+            <button
+              className="work-next-btn"
+              type="button"
+              onClick={() => scrollProjects("right")}
+              aria-label="Show next project"
+            >
+              <MdKeyboardArrowRight />
+            </button>
+          )}
         </div>
       </div>
     </div>
